@@ -10,8 +10,8 @@ import timber.log.Timber
 
 class MapperUi {
     companion object {
-        private const val START_SHIFT_SUCCESS = "Start shift - All good"
-        private const val END_SHIFT_SUCCESS = "End shift - All good"
+        private const val START_SHIFT_SUCCESS = "\"Start shift - All good\""
+        private const val END_SHIFT_SUCCESS = "\"End shift - All good\""
 
         fun toShiftUi(shiftApi: ShiftApi): ShiftUi? {
             return try {

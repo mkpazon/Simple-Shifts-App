@@ -16,5 +16,5 @@ class RemoteDataSource : KodeinAware {
 
     fun startShiftAsync(request: ShiftRequest) = api.startShiftAsync(request)
 
-    fun endShiftAsync(request: ShiftRequest) = api.startShiftAsync(request)
+    fun endShiftAsync(request: ShiftRequest) = api.endShiftAsync(request)
 }

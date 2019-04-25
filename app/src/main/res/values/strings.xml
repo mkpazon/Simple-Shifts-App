@@ -3,4 +3,9 @@
 
 
     <string name="in_progress">In Progress</string>
+    <string name="menu_start">Start</string>
+    <string name="menu_end">End</string>
+    <string name="location_permission_disabled_message">This app was not granted location permission</string>
+    <string name="shift_start_success">Successfully started shift</string>
+    <string name="shift_end_success">Successfully ended shift</string>
 </resources>

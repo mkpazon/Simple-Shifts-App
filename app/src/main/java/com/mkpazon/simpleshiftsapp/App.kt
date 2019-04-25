@@ -1,6 +1,7 @@
 package com.mkpazon.simpleshiftsapp
 
 import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.facebook.stetho.Stetho
 import com.mkpazon.simpleshiftsapp.di.appModule
 import org.kodein.di.Kodein
@@ -9,7 +10,7 @@ import timber.log.Timber
 
 
 
-class App : Application(), KodeinAware {
+class App : MultiDexApplication(), KodeinAware {
     override val kodein = Kodein.lazy { import(appModule) }
 
     companion object {
