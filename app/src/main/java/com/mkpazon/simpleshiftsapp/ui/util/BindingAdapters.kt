@@ -35,9 +35,10 @@ fun setImageSourceUrl(imageView: ImageView, url: String) {
 
 @BindingAdapter("shiftTime")
 fun setShiftTime(textView: TextView, shift: ShiftUi) {
+    val format = SimpleDateFormat(DATE_FORMAT_TIME_ONLY, Locale.getDefault())
+    val startTime = format.format(shift.startDate)
+
     if (shift.endDate != null) {
-        val format = SimpleDateFormat(DATE_FORMAT_TIME_ONLY, Locale.getDefault())
-        val startTime = format.format(shift.startDate)
         val endTime = format.format(shift.endDate)
 
         val startCal = Calendar.getInstance().apply {
@@ -66,7 +67,7 @@ fun setShiftTime(textView: TextView, shift: ShiftUi) {
         }
         textView.text = text
     } else {
-        textView.text = textView.context.getString(R.string.in_progress)
+        textView.text = textView.context.getString(R.string.present, startTime)
     }
 }
 
