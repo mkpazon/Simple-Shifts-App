@@ -33,7 +33,7 @@ class MainViewModel : ViewModel(), KodeinAware {
         CoroutineScope(Dispatchers.Default).launch {
             try {
                 val shifts = repository.getShiftsAsync().await()
-                val shiftsUi = shifts?.mapNotNull { MapperUi.toShiftUi(it) }
+                val shiftsUi = shifts?.mapNotNull { MapperUi.toShiftUi(it) }?.sortedBy { it.startDate }
                 shiftsLiveData.postValue(Resource.success(shiftsUi))
             } catch (e: Exception) {
                 shiftsLiveData.postValue(Resource.error(e))

@@ -5,9 +5,15 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="shift"
             type="com.mkpazon.simpleshiftsapp.ui.model.ShiftUi" />
+
+        <variable
+            name="shouldShowDate"
+            type="boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,24 +22,51 @@
         android:layout_margin="20dp"
         tools:context=".ui.main.MainFragment">
 
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="40dp"
+            android:textSize="24sp"
+            app:dayOfMonth="@{shift.startDate}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="28" />
+
+        <TextView
+            android:id="@+id/tv_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date"
+            app:month="@{shift.startDate}"
+            tools:text="Apr" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{shouldShowDate ? View.VISIBLE : View.INVISIBLE}"
+            app:constraint_referenced_ids="tv_date,tv_month" />
+
         <ImageView
             android:id="@+id/iv_shift"
             android:layout_width="60dp"
             android:layout_height="60dp"
-
             android:src="@{shift.image}"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_date"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_id"
+            android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
-            android:text="@{String.valueOf(shift.id)}"
             app:layout_constraintStart_toEndOf="@+id/iv_shift"
             app:layout_constraintTop_toTopOf="parent"
+            app:shiftTime="@{shift}"
             tools:text="123" />
 
         <TextView
@@ -41,9 +74,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            tools:text="test123"
-            android:text="@{shift.image}"
-            app:layout_constraintStart_toStartOf="@+id/tv_id"
-            app:layout_constraintTop_toBottomOf="@+id/tv_id" />
+            app:layout_constraintStart_toStartOf="@+id/tv_time"
+            app:layout_constraintTop_toBottomOf="@+id/tv_time"
+            tools:text="test123" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

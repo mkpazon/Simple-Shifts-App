@@ -43,6 +43,10 @@ class MainFragment : Fragment() {
             addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
             adapter = shiftAdapter
         }
+
+        sw_shifts.setOnRefreshListener {
+            viewModel.getShifts()
+        }
     }
 
     private fun initViewModel() {

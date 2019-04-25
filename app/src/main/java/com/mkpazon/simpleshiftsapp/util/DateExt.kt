@@ -5,6 +5,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 fun String.toDate(format: String = DEFAULT_DATE_FORMAT): Date {
-    val dateFormat = SimpleDateFormat(format, Locale.US)
+    val dateFormat = SimpleDateFormat(format, Locale.getDefault())
     return dateFormat.parse(this)
 }
