@@ -39,7 +39,22 @@ fun setShiftTime(textView: TextView, shift: ShiftUi) {
         val startTime = format.format(shift.startDate)
         val endTime = format.format(shift.endDate)
 
-        val difference = shift.endDate.time - shift.startDate.time
+        val startCal = Calendar.getInstance().apply {
+            timeInMillis = shift.startDate.time
+            set(Calendar.HOUR_OF_DAY, 0)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+        val endCal = Calendar.getInstance().apply {
+            timeInMillis = shift.endDate.time
+            set(Calendar.HOUR_OF_DAY, 0)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+
+        val difference = endCal.timeInMillis - startCal.timeInMillis
         val addDays = TimeUnit.MILLISECONDS.toDays(difference).toInt()
         val text = if (addDays > 0) {
             "$startTime - $endTime +$addDays"
