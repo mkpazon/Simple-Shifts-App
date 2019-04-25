@@ -12,9 +12,9 @@ interface Api  {
     fun getShiftsAsync(): Deferred<List<ShiftApi>?>
 
     @POST("shift/start")
-    fun startShiftAsync(@Body request: ShiftRequest): Deferred<ShiftResponse>
+    fun startShiftAsync(@Body request: ShiftRequest): Deferred<String>
 
     @POST("shift/end")
-    fun endShiftAsync(@Body request: ShiftRequest): Deferred<ShiftResponse>
+    fun endShiftAsync(@Body request: ShiftRequest): Deferred<String>
 
 }

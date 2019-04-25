@@ -15,6 +15,7 @@ import com.mkpazon.simpleshiftsapp.R
 import com.mkpazon.simpleshiftsapp.databinding.FragmentMainBinding
 import com.mkpazon.simpleshiftsapp.ui.Resource
 import com.mkpazon.simpleshiftsapp.ui.Resource.Status.*
+import timber.log.Timber
 
 class MainFragment : Fragment() {
 
@@ -44,7 +45,10 @@ class MainFragment : Fragment() {
                     SUCCESS -> {
                         binding.isLoading = false
                     }
-                    ERROR -> binding.isLoading = false
+                    ERROR -> {
+                        binding.isLoading = false
+                        Timber.e(resource.exception, "Failed to retrieve shifts")
+                    }
                 }
             })
         }

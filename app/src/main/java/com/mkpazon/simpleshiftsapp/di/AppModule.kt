@@ -18,6 +18,7 @@ import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 const val TIMEOUT = 6000L
@@ -31,6 +32,7 @@ val appModule = Kodein.Module("appModule") {
 
 private fun getApi(okHttpClient: OkHttpClient) = Retrofit.Builder()
         .baseUrl(BASE_URL)
+        .addConverterFactory(ScalarsConverterFactory.create())
         .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder()
                 .add(KotlinJsonAdapterFactory())
                 .build()))

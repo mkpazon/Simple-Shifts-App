@@ -42,6 +42,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
     implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
 
     // Kotlin
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_core_version"
@@ -58,19 +59,20 @@ dependencies {
     implementation "androidx.navigation:navigation-common-ktx:$nav_version"
 
     // Dependency Injection
-    implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
-    implementation "org.kodein.di:kodein-di-framework-android-core:$kodein_version"
-    implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
+    implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version" // for Dependency Injection
+    implementation "org.kodein.di:kodein-di-framework-android-core:$kodein_version" // for Dependency Injection
+    implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version" // for Dependency Injection
 
     // Networking
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    api "com.squareup.retrofit2:converter-moshi:$retrofit_version"
-    api "com.squareup.moshi:moshi-kotlin:$moshi_version"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
-    api "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofit_coroutines_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version" // HTTP API to interface
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version" // to make moshi work with retrofit by providing converters
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version" // Json parser
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version" // Json parser
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofit_coroutines_version" // To all using coroutines Deferred<> in api responses
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version" // to allow parsing HTTP response body to String
 
     // Debugging
-    debugImplementation "com.facebook.stetho:stetho:$stetho_version"
-    debugImplementation "com.facebook.stetho:stetho-okhttp3:$stetho_version"
-    implementation "com.jakewharton.timber:timber:$timber_version"
+    debugImplementation "com.facebook.stetho:stetho:$stetho_version" // For inspecting network calls visually through a chrome browser with chrome://inspect
+    debugImplementation "com.facebook.stetho:stetho-okhttp3:$stetho_version" // For inspecting network calls visually through a chrome browser with chrome://inspect
+    implementation "com.jakewharton.timber:timber:$timber_version" // For better logging experience
 }
