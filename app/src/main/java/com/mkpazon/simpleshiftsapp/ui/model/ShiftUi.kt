@@ -6,7 +6,7 @@ data class ShiftUi(val id: Int,
                    val startDate: Date,
                    val endDate: Date?,
                    val startCoordinates: Coordinates,
-                   val endCoordinates: Coordinates,
+                   val endCoordinates: Coordinates?,
                    val image: String) {
     fun getStatus(): ShiftStatus {
         return if (endDate != null) {

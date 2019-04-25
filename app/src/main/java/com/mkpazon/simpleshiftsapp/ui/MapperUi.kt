@@ -19,7 +19,7 @@ class MapperUi {
                         startDate = shiftApi.start.toDate(),
                         endDate = if (shiftApi.end.isEmpty()) null else shiftApi.end.toDate(),
                         startCoordinates = Coordinates(shiftApi.startLatitude.toDouble(), shiftApi.startLongitude.toDouble()),
-                        endCoordinates = Coordinates(shiftApi.endLatitude.toDouble(), shiftApi.endLongitude.toDouble()),
+                        endCoordinates = if(shiftApi.end.isEmpty()) null else Coordinates(shiftApi.endLatitude.toDouble(), shiftApi.endLongitude.toDouble()),
                         image = shiftApi.image
                 )
             } catch (e: Exception) {

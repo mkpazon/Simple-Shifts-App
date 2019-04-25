@@ -8,6 +8,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mkpazon.simpleshiftsapp.R
+import com.mkpazon.simpleshiftsapp.ui.model.Coordinates
 import com.mkpazon.simpleshiftsapp.ui.model.ShiftUi
 import com.mkpazon.simpleshiftsapp.util.orFalse
 import java.text.SimpleDateFormat
@@ -81,3 +82,10 @@ fun setMonth(textView: TextView, date: Date) {
     textView.text = format.format(date)
 }
 
+@BindingAdapter("displayCoordinates")
+fun setDisplayCoordinates(textView: TextView, coordinates: Coordinates?) {
+    coordinates?.let {
+        val text = textView.context.getString(R.string.display_coordinates, it.lat.toString(), it.lng.toString())
+        textView.text = text
+    }
+}

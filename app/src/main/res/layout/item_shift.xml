@@ -52,9 +52,10 @@
 
         <ImageView
             android:id="@+id/iv_shift"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@{shift.image}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_end_coordinates"
             app:layout_constraintStart_toEndOf="@+id/tv_date"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,12 +71,43 @@
             tools:text="123" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_start_coordinates_lbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:text="@string/start"
+            android:textAllCaps="true"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_time"
-            app:layout_constraintTop_toBottomOf="@+id/tv_time"
-            tools:text="test123" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_time" />
+
+        <TextView
+            android:id="@+id/tv_start_coordinates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            app:displayCoordinates="@{shift.startCoordinates}"
+            app:layout_constraintStart_toEndOf="@+id/tv_start_coordinates_lbl"
+            app:layout_constraintTop_toTopOf="@+id/tv_start_coordinates_lbl" />
+
+        <TextView
+            android:id="@+id/tv_end_coordinates_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/end"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_start_coordinates_lbl"
+            app:layout_constraintTop_toBottomOf="@+id/tv_start_coordinates" />
+
+        <TextView
+            android:id="@+id/tv_end_coordinates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:displayCoordinates="@{shift.endCoordinates}"
+            app:layout_constraintStart_toStartOf="@+id/tv_start_coordinates"
+            app:layout_constraintTop_toTopOf="@+id/tv_end_coordinates_lbl" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

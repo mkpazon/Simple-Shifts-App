@@ -8,4 +8,7 @@
     <string name="location_permission_disabled_message">This app was not granted location permission</string>
     <string name="shift_start_success">Successfully started shift</string>
     <string name="shift_end_success">Successfully ended shift</string>
+    <string name="display_coordinates">Lat:%s\nLng:%s</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
 </resources>
