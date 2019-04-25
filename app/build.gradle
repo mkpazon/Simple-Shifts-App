@@ -14,6 +14,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    defaultConfig {
+        buildConfigField("String", "BASE_URL", "\"https://apjoqdqpi3.execute-api.us-west-2.amazonaws.com/dmc/\"")
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -61,4 +64,15 @@ dependencies {
     implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
     implementation "org.kodein.di:kodein-di-framework-android-core:$kodein_version"
     implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
+
+    // Networking
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    api "com.squareup.moshi:moshi-kotlin:$moshi_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+    api "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofit_coroutines_version"
+
+    // Debugging
+    debugImplementation "com.facebook.stetho:stetho:$stetho_version"
+    debugImplementation "com.facebook.stetho:stetho-okhttp3:$stetho_version"
 }

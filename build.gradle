@@ -40,6 +40,15 @@ allprojects {
         junit_ext_version = "1.1.0"
         espresso_version = "3.1.1"
         test_runner_version = "1.1.1"
+
+        // Networking
+        retrofit_version = "2.5.0"
+        moshi_version = "1.8.0"
+        retrofit_coroutines_version = "0.9.2"
+
+        // Debugging
+        stetho_version = "1.5.1"
+
     }
 }
 
