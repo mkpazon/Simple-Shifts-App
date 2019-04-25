@@ -2,8 +2,6 @@ package com.mkpazon.simpleshiftsapp.data.model
 
 import com.squareup.moshi.Json
 
-data class GetShiftsResponse(val shifts: List<ShiftApi>?)
-
 data class ShiftApi(@Json(name = "id")
                     val id: Int,
                     @Json(name = "start")

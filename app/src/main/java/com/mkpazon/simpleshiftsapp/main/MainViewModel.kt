@@ -42,4 +42,12 @@ class MainViewModel : ViewModel(), KodeinAware {
             }
         }
     }
+
+    fun startShift() = runBlocking {
+        // TODO not yet implemented
+    }
+
+    fun endShift() = runBlocking {
+        // TODO not yet implemented
+    }
 }
