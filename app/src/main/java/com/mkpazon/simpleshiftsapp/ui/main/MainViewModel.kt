@@ -1,4 +1,4 @@
-package com.mkpazon.simpleshiftsapp.main
+package com.mkpazon.simpleshiftsapp.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +18,7 @@ class MainViewModel : ViewModel(), KodeinAware {
     private val job = Job()
 
     private val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Default
+        get() = job + Dispatchers.Main
 
     private val scope = CoroutineScope(coroutineContext)
 
@@ -28,14 +28,12 @@ class MainViewModel : ViewModel(), KodeinAware {
     private val shiftsLiveData = MutableLiveData<Resource<List<ShiftUi>>>()
     val shifts: LiveData<Resource<List<ShiftUi>>> = shiftsLiveData
 
-    fun getShifts() = runBlocking {
+    fun getShifts() = scope.launch {
         shiftsLiveData.value = Resource.loading()
-        scope.launch {
+        CoroutineScope(Dispatchers.Default).launch {
             try {
                 val shifts = repository.getShiftsAsync().await()
-                val shiftsUi = shifts?.map {
-                    MapperUi.toShiftUi(it)
-                }
+                val shiftsUi = shifts?.mapNotNull { MapperUi.toShiftUi(it) }
                 shiftsLiveData.postValue(Resource.success(shiftsUi))
             } catch (e: Exception) {
                 shiftsLiveData.postValue(Resource.error(e))

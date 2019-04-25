@@ -75,4 +75,7 @@ dependencies {
     debugImplementation "com.facebook.stetho:stetho:$stetho_version" // For inspecting network calls visually through a chrome browser with chrome://inspect
     debugImplementation "com.facebook.stetho:stetho-okhttp3:$stetho_version" // For inspecting network calls visually through a chrome browser with chrome://inspect
     implementation "com.jakewharton.timber:timber:$timber_version" // For better logging experience
+
+    // Image Loading
+    implementation "com.github.bumptech.glide:glide:$glide_version"
 }

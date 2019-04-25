@@ -1,4 +1,4 @@
-package com.mkpazon.simpleshiftsapp.main
+package com.mkpazon.simpleshiftsapp.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
