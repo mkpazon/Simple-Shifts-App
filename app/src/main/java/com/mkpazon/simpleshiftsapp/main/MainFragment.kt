@@ -6,26 +6,47 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 
 import com.mkpazon.simpleshiftsapp.R
+import com.mkpazon.simpleshiftsapp.databinding.FragmentMainBinding
+import com.mkpazon.simpleshiftsapp.ui.Resource
+import com.mkpazon.simpleshiftsapp.ui.Resource.Status.*
 
 class MainFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
-
-    private var viewModel = navGraphViewModels<MainViewModel>(R.navigation.nav_main)
+    private lateinit var binding: FragmentMainBinding
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        initViewModel()
 
+        viewModel.getShifts()
     }
 
+    private fun initViewModel() {
+        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java).apply {
+            shifts.observe(this@MainFragment, Observer { resource ->
+                when (resource.status) {
+                    LOADING -> {
+                        binding.isLoading = true
+                    }
+                    SUCCESS -> {
+                        binding.isLoading = false
+                    }
+                    ERROR -> binding.isLoading = false
+                }
+            })
+        }
+    }
 }

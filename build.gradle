@@ -48,7 +48,7 @@ allprojects {
 
         // Debugging
         stetho_version = "1.5.1"
-
+        timber_version = "4.7.1"
     }
 }
 

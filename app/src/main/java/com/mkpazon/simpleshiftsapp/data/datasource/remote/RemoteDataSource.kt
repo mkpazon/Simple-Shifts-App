@@ -11,4 +11,6 @@ class RemoteDataSource : KodeinAware {
 
     private val api: Api by instance()
 
+    fun getShiftsAsync() = api.getShiftsAsync()
+
 }

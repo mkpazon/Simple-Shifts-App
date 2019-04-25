@@ -14,9 +14,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    defaultConfig {
-        buildConfigField("String", "BASE_URL", "\"https://apjoqdqpi3.execute-api.us-west-2.amazonaws.com/dmc/\"")
-    }
     buildTypes {
         release {
             minifyEnabled false
@@ -41,15 +38,15 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
-
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+    implementation "com.google.android.material:material:$material_version"
 
     // Kotlin
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_core_version"
 
     // Test
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test:runner:$test_runner_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
@@ -75,4 +72,5 @@ dependencies {
     // Debugging
     debugImplementation "com.facebook.stetho:stetho:$stetho_version"
     debugImplementation "com.facebook.stetho:stetho-okhttp3:$stetho_version"
+    implementation "com.jakewharton.timber:timber:$timber_version"
 }
